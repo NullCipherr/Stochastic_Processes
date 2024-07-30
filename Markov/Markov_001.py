@@ -5,20 +5,29 @@
 
 import numpy as np
 
+def print_probability(probability, title):
+    """
+    Imprime a probabilidade com um título.
+
+    Parameters:
+        probability (float): Probabilidade a ser impressa.
+        title (str): Título para a probabilidade.
+    """
+    print(f"{title} = {probability}")
+
 # Matriz de transição
-P = np.array([[0.1, 0.2, 0.7],
-              [0.2, 0.2, 0.6],
-              [0.6, 0.1, 0.3]])
+P = np.array([
+    [0.1, 0.2, 0.7],
+    [0.2, 0.2, 0.6],
+    [0.6, 0.1, 0.3]
+])
 
-# Probabilidade de X3 = 2 dado X1 = 1
+# Cálculo das probabilidades de transição
 P_X3_2_given_X1_1 = np.linalg.matrix_power(P, 2)[1, 2]
-
-# Probabilidade de X3 = 2 dado X0 = 1
 P_X3_2_given_X0_1 = np.linalg.matrix_power(P, 3)[1, 2]
-
-# Probabilidade de X4 = 2 dado X0 = 1
 P_X4_2_given_X0_1 = np.linalg.matrix_power(P, 4)[1, 2]
 
-print(f"P(X3 = 2 | X1 = 1) = {P_X3_2_given_X1_1}")
-print(f"P(X3 = 2 | X0 = 1) = {P_X3_2_given_X0_1}")
-print(f"P(X4 = 2 | X0 = 1) = {P_X4_2_given_X0_1}")
+# Impressão dos resultados
+print_probability(P_X3_2_given_X1_1, "P(X3 = 2 | X1 = 1)")
+print_probability(P_X3_2_given_X0_1, "P(X3 = 2 | X0 = 1)")
+print_probability(P_X4_2_given_X0_1, "P(X4 = 2 | X0 = 1)")

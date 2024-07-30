@@ -6,29 +6,54 @@
 
 import numpy as np
 
-# Matriz de transição
-P = np.array([[1, 0, 0, 0, 0, 0],
- [0.5, 0, 0.5, 0, 0, 0],
- [0, 0.5, 0, 0.5, 0, 0],
- [0, 0, 0.5, 0, 0.5, 0],
- [0, 0, 0, 0.5, 0, 0.5],
- [0, 0, 0, 0, 0, 1]])
+def calculate_probabilities(P_sub, initial_state, steps):
+    """
+    Calcula a probabilidade de atingir todos os estados possíveis em uma submatriz após um número específico de transições.
 
-# Exclui os estados 0 e 5 para obtermos a submatriz
+    Parameters:
+        P_sub (np.ndarray): Submatriz de transição.
+        initial_state (np.ndarray): Vetor de distribuição inicial.
+        steps (list of int): Lista de números de passos.
+
+    Returns:
+        dict: Dicionário com números de passos como chaves e probabilidades como valores.
+    """
+    probabilities = {}
+    
+    for k in steps:
+        # Calcula a matriz de transição elevada à potência especificada
+        Pk_sub = np.linalg.matrix_power(P_sub, k)
+        
+        # Calcula a probabilidade de atingir todos os estados
+        prob = np.dot(initial_state, Pk_sub).sum()
+        
+        # Armazena o resultado no dicionário
+        probabilities[k] = prob
+    
+    return probabilities
+
+# Matriz de transição
+P = np.array([
+    [1, 0, 0, 0, 0, 0],
+    [0.5, 0, 0.5, 0, 0, 0],
+    [0, 0.5, 0, 0.5, 0, 0],
+    [0, 0, 0.5, 0, 0.5, 0],
+    [0, 0, 0, 0.5, 0, 0.5],
+    [0, 0, 0, 0, 0, 1]
+])
+
+# Exclui os estados 0 e 5 para obter a submatriz
 P_sub = P[1:5, 1:5]
 
 # Define o estado inicial do vetor para o estado 2
 initial_state = np.array([0, 1, 0, 0])
 
-# Numero de passos k
+# Número de passos a serem considerados
 steps = [2, 3, 4, 5, 6]
 
-probabilities = {}
+# Calcula as probabilidades
+probabilities = calculate_probabilities(P_sub, initial_state, steps)
 
-# Calcula a probabilidade para cada passo
-for k in steps:
-  Pk_sub = np.linalg.matrix_power(P_sub, k)
-  prob = np.dot(initial_state, Pk_sub).sum()
-  probabilities[k] = prob
-
-probabilities
+# Exibe as probabilidades
+for k, prob in probabilities.items():
+    print(f"Probabilidade de atingir todos os estados após {k} passos: {prob}")

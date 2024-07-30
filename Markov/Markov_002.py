@@ -5,6 +5,22 @@
 
 import numpy as np
 
+def print_matrix_power(matrix, power):
+    """
+    Calcula e imprime a matriz elevada à potência especificada.
+    
+    Parameters:
+        matrix (np.ndarray): Matriz de transição.
+        power (int): Potência à qual a matriz deve ser elevada.
+    """
+    # Calcula a matriz elevada à potência especificada
+    result = np.linalg.matrix_power(matrix, power)
+    
+    # Imprime a matriz resultante
+    print(f"P^{power}")
+    print(result)
+    print()  # Linha em branco para separar as saídas
+
 # Matriz de transição
 P = np.array([
     [0, 0.6, 0.4],
@@ -12,22 +28,8 @@ P = np.array([
     [0.6, 0.4, 0]
 ])
 
-P3 = np.linalg.matrix_power(P, 3)
+# Imprime a matriz P^3
+print_matrix_power(P, 3)
 
-print("P^3")
-print(P3)
-
-# Pular linha
-print()
-
-P4 = np.linalg.matrix_power(P, 4)
-print("P^4")
-print(P4)
-
-print()
-
-print("P_X3_1_given_X0_1 and P_X4_1_given_X0_1 ") 
-P_X3_1_given_X0_1 = P3[0, 0]
-P_X4_1_given_X0_1 = P4[0, 0]
-
-P_X3_1_given_X0_1, P_X4_1_given_X0_1
+# Imprime a matriz P^4
+print_matrix_power(P, 4)
