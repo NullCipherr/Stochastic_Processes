@@ -2,7 +2,7 @@
 
 Um processo de Poisson é um modelo estocástico que descreve a ocorrência de eventos ao longo do tempo ou espaço, sendo uma generalização da distribuição de Poisson e frequentemente utilizado para modelar eventos que ocorrem continuamente e independentemente ao longo do tempo.
 
-Os processos de Poisson têm as seguintes propriedades:
+Os processos de Poisson possui as seguintes propriedades:
 
 - Estacionariedade: A taxa de ocorrência dos eventos é constante ao longo do tempo.
 - Independência: O número de eventos que ocorrem em intervalos de tempo disjuntos são independentes.
