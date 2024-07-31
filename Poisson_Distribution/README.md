@@ -2,7 +2,7 @@
 
 A função de probabilidade da distribuição de Poisson é dada por:
 
-\[ P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!} \]
+P(X=k) = (λ^k \* e^(-λ)) / k!
 
 onde:
 
