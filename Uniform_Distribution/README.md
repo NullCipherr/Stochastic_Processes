@@ -12,10 +12,16 @@ A distribuição uniforme é um modelo estatístico que descreve uma situação 
 
 O valor esperado E(X) de uma distribuição uniforme U(a,b) é dado por:
 
+![Valor Esperado]()
+
 ## Variância
 
 A variância Var(X) de uma distribuição uniforme U(a,b) é dada por:
 
+![Variância]()
+
 ## Função de Distribuição Acumulada (FDA)
 
 A função de distribuição acumulada F(x) de uma distribuição uniforme U(a,b) é dada por:
+
+![Função de Distribuição Acumulada]()
